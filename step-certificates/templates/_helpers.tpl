@@ -45,6 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 
 {{/*
+Create the name of the service account to use
+*/}}
+{{- define "step-certificates.serviceAccountName" -}}
+{{- if .Values.serviceAccount.create }}
+{{- default (include "step-certificates.fullname" .) .Values.serviceAccount.name }}
+{{- else }}
+{{- default "default" .Values.serviceAccount.name }}
+{{- end }}
+{{- end }}
+
+{{/*
 Create CA URL
 */}}
 {{- define "step-certificates.url" -}}

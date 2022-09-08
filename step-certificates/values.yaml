@@ -217,6 +217,15 @@ service:
   nodePort: ""
   annotations: {}
 
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
 # linkedca contains the token to configure step-ca using the linkedca mode.
 #
 # The linked ca token can be provided using the linkedca.token value or using a
